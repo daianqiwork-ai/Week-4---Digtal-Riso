@@ -1,15 +1,16 @@
 /*
 For this exercise, I tried using stochastic techiniques to create small animations to a graphic design. I decided to use this technique as I found the grainy quality to be very reminiscent of risograph or screen printing. I wanted to hence achieve a similar effect by playing with overlap, density, and fading. 
 
-I used random distributions for the wavy lines, and a Gaussian distribution for the background for contrast. 
+I used random distributions for the wavy lines to resemble the waves, with different gradient of blue, keeping the waves inside the rectangle container.
 
-As for the circle, I found that a random distribution through -1 and 1 already had a natural bias towards the more central values around 0, causing an uneven spot in the centre. However, I wanted a more even grain, hence I applied a biased distribution away from the centre (closer to the value of 1) to calibrate it. 
+As for the circle, I played with the density of the circle, setting the size of the inner density circle and outer density circle and the radius of the circle,the color to resemble a glowing sun.
 
-For the square, I applied a random distribution to the base shape, but added a bottom left corner bias shadow over it to create an illusion of the tilt caused by the weight of the shadow. 
+For the square, I applied a random distribution to the base shape, but added a bottom left corner bias shadow over it to create an illusion of the tilt caused by the weight of the shadow. I adjust the X & Y axis and the density of the noise,
+so that it looks like it's resting on top of the wave.
 
-Finally, for the blue rectangle. I applied a bottom bias distribution to create a fade effect. 
+Finally, for the blue rectangle, i adjust the bottom and top line to create a faint gradient effect of the warmth of the sun and the blue of the water.
 
-Moving on, I could improve in making the sketch more dynamic, in which one distribution could transition into another.
+Moving on, I could improve in making the sketch more dynamic, mainly in the transition between two gradients, and the clarity of the visual.
 
 Overall, I was very surprised at the effectiveness of stochastic techiniques to create visual texture and interest and I would definitely use this method for graphic design projects and many other things in the future. 
 */
@@ -36,7 +37,7 @@ function draw() {
     // circle
     //stroke --> Color RGB code
     stroke(222, 145, 51);
-    //translate --> 
+    //translate --> location
     translate(width / 5, height / 4);
     for (var i = 0; i < 5000; i++) {
         var cirDist = (max(random(0, 1.5), random(0, 0.75)) * width) / 15; //Outside, Inside, Size
@@ -48,14 +49,15 @@ function draw() {
 
     // top line
     stroke(222, 145, 51);
-    for (var i = 0; i < 1500; i++) { // i < value --> Density of the noise
+    for (var i = 0; i < 5000; i++) { // i < value --> Density of the noise
         var lineX = random(70, 350);  // X-axis length X1 - X2
-        var lineY = random(20 - 10, 20 + 150);
+        var lineY = random(20 - 10, 20 + 200);
         point(lineX, lineY);
     }
     
 
     // bottom line
+     stroke(36, 157, 148);
     for (var i = 0; i < 2000; i++) {
         var lineX = random(70, 350);
         var lineY = random(320 - 150, 320 + 10);
